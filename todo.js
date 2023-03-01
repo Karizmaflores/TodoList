@@ -56,18 +56,44 @@
     let list = document.getElementById("todo-list");
 
     for (let index = 0; index < arrayOfTodos.length; index ++){
-        let li = document.createElement("li");
-        const text = document.createTextNode(arrayOfTodos[1]);
+      let todo = arrayOfTodos[index]  
+      let li = document.createElement("li");
+        const text = document.createTextNode(todo.title);
         list.appendChild(text);
         document.getElementById('todo-list').appendChild(li);
     }
+  }
 
 
-    let firstUser = arrayOfTodos[0]
-    console.log('firstUser', firstUser.userId)
+  const todoFilter = () => {
 
-    for (let index = 0; index < arrayOfTodos.length; index ++){
-        const todo =  arrayOfTodos[index];
-        console.log('todo:', todo)
+
+    let userId = document.getElementById("userId").value;
+   
+    let filtered = arrayOfTodos.filter((todo) => {
+      if (todo.userId === parseInt(userId)){
+        return todo
+      }
+    })
+    console.log(filtered)
+    let list = document.getElementById("todo-list");
+      for (let index = 0; index < filtered.length; index ++){
+        let todo = filtered[index]  
+        let li = document.createElement("li");
+          const text = document.createTextNode(todo.title);
+          list.appendChild(text);
+          document.getElementById('todo-list').appendChild(li);
     }
   }
+
+
+
+
+    // let firstUser = arrayOfTodos[0]
+    // console.log('firstUser', firstUser.userId)
+
+    // for (let index = 0; index < arrayOfTodos.length; index ++){
+    //     const todo =  arrayOfTodos[index];
+    //     console.log('todo:', todo)
+    // }
+  
